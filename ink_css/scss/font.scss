@@ -1,0 +1,107 @@
+// 문자, 폰트 관련
+//
+@import '../function.scss';
+@import '../setting.scss';
+
+
+// 폰트 크기 (font-size)
+@for $i from 1 through 42 {
+  .font-#{$i} {font-size: $i / 10 + rem;}
+}
+// 폰트 굵기
+.font-thin {font-weight: 100;}
+.font-extralight {font-weight: 200;}
+.font-light {font-weight: 300;}
+.font-normal {font-weight: 400;}
+.font-regular {font-weight: 400;}
+.font-medium {font-weight: 500;}
+.font-semibold {font-weight: 600;}
+.font-bold {font-weight: 700;}
+.font-extrabold {font-weight: 800;}
+.font-black {font-weight: 900;}
+@for $i from 1 through 9 {
+  .font-weight-#{$i * 100} {font-weight: $i * 100 }
+}
+
+// 텍스트 포인트
+.t-color-main {color: $main_color;}
+.t-color {color: $main_color;}
+.t-color-strong {color: $font_color_1;}
+.t-color-medium {color: $font_color_2;}
+.t-color-soft {color: $font_color_3;}
+.t-color-white {color: #fff;}
+.t-color-point {color: $point_color;}
+.t-color-dis {color: $dis_color;}
+
+// 정렬
+.text-center {text-align: center;}
+.text-left {text-align: left;}
+.text-right {text-align: right;}
+.text-justify {text-align: justify;}
+
+// 정렬 y
+.vertical-middle {vertical-align: middle;}
+.vertical-baseline {vertical-align: baseline;}
+.vertical-top {vertical-align: top;}
+.vertical-bottom {vertical-align: bottom;}
+.vertical-inherit {vertical-align: inherit;}
+
+// 자간
+.letter-reset {letter-spacing: 1;} // reset
+.letter-small {letter-spacing: -1px;} // 좁게
+.letter-usually {letter-spacing: 0;} // 보통
+.letter-large {letter-spacing: 1px;} // 넓게
+
+// 어간
+.word-reset {word-spacing: 1;}
+.word-small {word-spacing: -1px;}
+.word-usually {word-spacing: 0;}
+.word-large {word-spacing: 1px;}
+
+// 행간
+.line-reset {line-height: 1;}
+.line-usually {line-height: 1.5;}
+@for $i from 1 through 180 {
+  @if ($i % 2 == 0) {
+    .line-#{$i} {line-height: $i + px;}
+  }
+}
+
+
+// 말줄임
+.ellipsis {
+  display: inline-block;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+// 말줄임 2줄 이상 - height 값을 정의 할 것
+@for $i from 1 through 4 {
+  .ellipsis-#{$i} {display: -webkit-box; -webkit-line-clamp: $i; -webkit-box-orient: vertical;
+    overflow: hidden; text-overflow: ellipsis; word-break: break-word;
+  }
+}
+
+// 줄내림 기준
+.word-break-normal {word-break: normal;}
+.word-break-break-all {word-break: break-all;}
+.word-break-keep-all {word-break: keep-all;}
+
+// 글자 숨김(웹표준 및 접근성에 의함)
+// 접근성에서 요소의 크기를 줄이거나 숨기면 안됨(일부 리더기의 차이와 전맹 사용자만 있는 것이 아님)
+.text-hide {
+  overflow: hidden;
+  position: absolute; // BFC : relative / IFC : absolute
+  display: inline-block; // IFC(inline formatting context) 문맥상의 문제 해결
+  border: 0;
+  // 요소크기의 0을 피하고 가장 근접하게 수렴한 1px
+  // screen out 기법으로 인한 black hat을 피하기 위해 고안된 방법
+  width: 1px;
+  height: 1px;
+  clip: rect(1px 1px 1px 1px); // IE6, IE7
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  z-index: -1;
+}
+
+
+// 세로 쓰기
+.t-vertical {writing-mode: vertical-rl; text-orientation: mixed;}

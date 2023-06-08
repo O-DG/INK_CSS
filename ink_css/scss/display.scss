@@ -1,0 +1,81 @@
+// 디스플레이 관련
+//
+@import '../function.scss';
+@import '../setting.scss';
+
+.inline {display: inline;}
+.inline-block {display: inline-block;}
+.block {display: block;}
+.flex{display: flex;}
+.inline-flex {display: inline-flex;}
+// &.f-row {flex-direction: row;}
+// &.f-row-r {flex-direction: row-reverse;}
+// &.f-column {flex-direction: column;}
+// &.f-column-r {flex-direction: column-reverse}
+//
+// &.f-nowrap {flex-wrap: nowrap;}
+// &.f-wrap {flex-wrap: wrap;} // flex-wrap: nowrap (default)
+// &.f-wrap-r {flex-wrap: wrap-reverse;}
+
+$f-row : (row : row, row-r : row-reverse, col : column, col-r : column-reverse);
+$f-wrap : (nowrap : nowrap, wrap : wrap, wrap-r : wrap-reverse);
+@each $key, $val in $f-row {
+  .f-#{$key} {flex-direction: $val;}
+}
+@each $key, $val in $f-wrap {
+  .f-#{$key} {flex-wrap: $val;}
+}
+@each $key1, $val1 in $f-row {
+  @each $key2, $val2 in $f-wrap {
+    .f-#{$key1}-#{$key2} {flex-grow: $val1 $val2;}
+  }
+}
+
+$f-justify : (start : flex-start, end : flex-end, center : center, between : space-between, around : space-around, enenly : space-evenly);
+$f-align : (start : flex-start, end : flex-end, center : center, baseline : baseline);
+@each $key, $val in $f-justify {
+  .f-justify-#{$key} {justify-content: $val;}
+}
+@each $key, $val in $f-align {
+  .f-align-#{$key} {align-items: $val;}
+}
+
+@for $i from 0 through 100 {
+  @if ($i % 2) == 0 {
+    .f-gap-#{$i} {gap: $i + px;}
+  }
+}
+
+.f-item {flex: 0 1 auto;}
+.f-item-1 {flex: 1;}
+// grow : flex-container 내부에서 할당할 공간의 정의
+// shrink : flex-container 보다 요소의 크기가 클 때 적용되는 요소의 크기 비율
+// basis : 아이템의 초기 크기 wrap의 형태에 따라 width 및 height 값으로 변동
+// basis 속성은 auto만 지원 : 각 요소별 width 및 height 값으로 대체 할 것
+@for $i from 0 through 10 {
+  @for $j from 0 through 10 {
+    .f-item-#{$i}-#{$j} {flex: $i / 10 $j / 10 auto;}
+  }
+}
+
+$f-item-align : (auto : auto, stretch : stretch, start : flex-start, end : flex-end, center : center, baseline : baseline);
+@each $key, $val in $f-item-align {
+  .f-item-align-#{$key} {align-self: $val;}
+}
+
+.none {display: none;}
+.left {float: left;}
+.right {float: right;}
+.float-none {float: none;}
+.clear {
+  &::after {content: ''; display: block; clear: both;}
+}
+.over-hidden {overflow: hidden;}
+.over-hidden-x {overflow-x: hidden;}
+.over-hidden-y {overflow-y: hidden;}
+.over-scroll {overflow: scroll;}
+.over-scroll-x {overflow-x: scroll;}
+.over-scroll-y {overflow-y: scroll;}
+.over-auto {overflow: auto;}
+.over-auto-x {overflow-x: auto;}
+.over-auto-y {overflow-y: auto;}

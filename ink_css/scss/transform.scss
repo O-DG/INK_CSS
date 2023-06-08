@@ -1,0 +1,69 @@
+// 트랜스폼 관련
+//
+@import '../function.scss';
+@import '../setting.scss';
+
+@mixin rotate($x : 0, $y : 0, $unit : 'px') {
+  $rotate_size : -120, -90, -75, -50, -45, -25, 0, 25, 45, 50, 75, 90, 120;
+  @each $val in $rotate_size{
+    @if $unit == 'per' {
+      &.rotate-#{$val} {transform: translateX(percentage($x)/100) translateY(percentage($y)/100) rotate($val + deg);}
+    }
+    @else if $unit == 'px' {
+      &.rotate-#{$val} {transform: translateX($x + $unit) translateY($y + $unit) rotate($val + deg);}
+    }
+  }
+}
+@mixin scale($x : 0, $y : 0, $unit : 'px') {
+  @for $i from -14 through 14 {
+    @if ($i % 2) == 0 {
+      @if $unit == 'per' {
+        &.scale-#{$i} {transform: translateX(percentage($x)/100) translateY(percentage($y)/100) scale($i / 10);}
+      }
+      @else if $unit == 'px' {
+        &.scale-#{$i} {transform: translateX($x + $unit) translateY($y + $unit) scale($i / 10);}
+      }
+
+    }
+  }
+}
+
+@for $i from -50 through 50 {
+  @if ($i % 10) == 0 {
+    .x-#{$i} {transform: translateX($i + px);
+      @include rotate($i, 0);
+      @include scale($i, 0);
+
+      @for $j from 0 through 50 {
+        @if ($j % 10) == 0 {
+          &.y-#{$j} {transform: translate($i + px, $j + px);
+            @include rotate($i, $j);
+            @include scale($i, $j);
+          }
+        }
+      }
+    }
+    .y-#{$i} {transform: translateY($i + px);
+      @include rotate(0, $i);
+      @include scale(0, $i);
+    }
+  }
+  // .x-#{$i} {transform: translateX($i + px);}
+  // .y-#{$i} {transform: translateY($i + px);}
+  // .xy-#{$i} {transform: translateY($i + px);}
+}
+$x_per_size : -100, -50, 0, 50, 100;
+@each $val in $x_per_size{
+  .x-#{$val}per {transform: translate(percentage($val)/100);
+    @include rotate($val, 0, 'per');
+    @include scale($val, 0, 'per');
+    &.y-#{$val}per {transform: translate(percentage($val)/100, percentage($val)/100);
+      @include rotate($val, $val, 'per');
+      @include scale($val, $val, 'per');
+    }
+  }
+  .y-#{$val}per {transform: translateY(percentage($val)/100);
+    @include rotate(0, $val, 'per');
+    @include scale(0, $val, 'per');
+  }
+}

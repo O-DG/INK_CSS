@@ -1,0 +1,115 @@
+// INK layout style sheet
+// this is standard sheet
+@import './function.scss';
+
+
+// - 읽기/쓰기 요령 및 규칙
+// 변수와 요소 사용에 있어서 구분하기 위함이며,
+// 퍼블리싱할 때에 CSS 문법과 유사하게 적용하여 빠른 습득 및 유추하여 작성 할 수 있도록 하기 위함.
+//
+// 변수의 스페이스는 '_' 언더바를 이용하고
+// 요소의 스페이스는 '-' 하이픈을 이용.
+//
+// - 제공하는 모든 사항은 Class(클래스)로 정의되어 있으며, CSS의 속성값과 유사.
+// Bootstrap(부트스트랩)과 Taillwind(테일윈드)와 유사한 프레임워크라고 생각하시면 빠른 적응에 기여.
+//
+// - 정의 규칙 및 사용 예제
+// 보편적인 프레임워크의 간격 정의가 유사.
+// p-10     = padding: 10px;
+// pt-8     = padding-top: 8px;
+// m-5      = margin: 5px;
+// mb-12    = margin-bottom: 12px;
+// r-12    = border-radius: 12px;
+//
+// 커스터마이징 및 상속, 편의를 고려한 정의.
+// 속성값 : CSS 속성값 (ex : font-size, color, position ...)
+// 적용값 : 속성값에 대한 적용치 (ex: block, 12, relative ...)적용값은 공백 및 하이픈 제외.
+// 속성값-적용값 :
+// w-4                   = width : 100 / 4 = 25% (width와 height는 100%/n 공식으로 정의)
+// position-absolute     = position : absolute
+// ellipsis              = overflow, text-overflow, white-space 통합 정의
+// ellipsis-3            = 2줄 이상 옵션 제공
+//
+// 위와 같이 기본적으로 CSS 속성값과 적용값으로 정의되어 있으며,
+// 특성에 따라 말줄임 및 명사로 정의되어 있음.
+//
+//
+//
+//
+// - 사용 전, 주석을 확인하여 사용법 및 주의사항을 인지한 상태에서 사용하는 것을 권장.
+//
+// - 수정 시, 현 코드를 수정하기보다 별도의 스타일시트를 생성하여 재구성하는 것을 권장.
+//
+// - 초기화 설정값은 **으로 검색하여 빠른 찾기 가능.
+// - 분류별, @@으로 검색하여 빠른 찾기 가능.
+
+
+
+
+// ** URL 경로지정
+$imgurl : '/assets/img/';
+$fonturl : '/assets/fonts/';
+// $directory : 'basic'; // pages 내의 상위 디렉토리
+// $imgurl : '/pages/' + $directory + '/img/';
+// $fonturl : '/assets/fonts/';
+
+// ** 최대 너비
+$max_width: 1200px;
+$max_width_calc: 1200; // 연산용
+
+// ** 글꼴(폰트) 크기 기준 - rem 계산
+$font_size : 10px;
+$font_size_body : 1.6rem; // 전체 최소 크기
+
+// ** 크기 기준 (2, 4, 8 배수 권장)
+$standard_size : 4; // 4배수 크기 디자인 기준
+
+// 간격 (크기 기준-배수에 의해 값이 정의됨)
+$interval_1 : $standard_size;
+$interval_2 : $standard_size * 2;
+$interval_3 : $standard_size * 3;
+$interval_4 : $standard_size * 4;
+// 화면 맞춤 간격 h-screen = 100vh (높이 화면맞춤 사용시 디바이스 화면 제외 간격)
+$gap_hd : 50px;  // 헤더(상단 - header) 높이
+$gap_ft : 50px;  // 푸터(하단 - footer) 높이
+$gap_h : $gap_hd + $gap_ft;
+
+
+// **색상 팔레트
+$main_color : #333; // 브랜드
+$sub_color : #666; // 브랜드
+$font_color_1 : #212121; // 타이포 = 강
+$font_color_2 : #565656; // 타이포 = 중
+$font_color_3 : #727272; // 타이포 = 약
+$dis_color : #999; // 디스크럽션(서술/묘사)
+$point_color : #cc0000; //포인트 (주의 텍스트)
+$background_color: #fff; // 페이지 배경색
+$border_color: #ccc; // 테두리 색
+
+// 데이트피커(일자선택) 색상
+$date_color: $main_color;
+
+// 시스템 색상 팔레트
+$color_primary : #0080dd; // 동의
+$color_danger : #cc0000; // 경고, 취소
+
+$color_msg : #666; // 메시지
+$color_success : #49d662; // 성공
+$color_error : #ff355a; // 실패
+$color_info : #2e86e8; // 정보
+$color_warning : #ffbb00; // 경고
+
+// 스크롤 팔레트
+$scroll_bg : rgba(0, 0, 0, 0.1);
+$scroll_thumb : $main_color;
+$scroll_track : #fff;
+
+
+// 반응형 기준 설정 (max-width로 적용)
+$xxs : 300px;
+$xs : 500px;
+$sm : 600px;
+$md : 800px;
+$lg : 1000px;
+$xl : 1200px;
+$xxl : 1400px;

@@ -1,0 +1,396 @@
+// INK style sheet animation for ink js
+@import '../function.scss';
+@import '../setting.scss';
+
+// appear_ani
+.appear {
+  @include prefix(animation-name, appear);
+  @include prefix(animation-duration, 0.1s);
+  @include prefix(animation-delay, 0s);
+  @include prefix(animation-direction, normal);
+  @include prefix(animation-timing-function, ease-in-out);
+  @include prefix(animation-fill-mode, forwards);
+}
+@include keyframes(appear){
+  0% {
+    @include prefix(transform, scale(0));
+  }
+  85% {
+    @include prefix(transform, scale(1.1));
+  }
+  90% {
+    @include prefix(transform, scale(1));
+  }
+  95% {
+    @include prefix(transform, scale(0.9));
+  }
+  100% {
+    @include prefix(transform, scale(1));
+  }
+}
+
+.disappear {
+  @include prefix(animation-name, disappear);
+  @include prefix(animation-duration, 0.1s);
+  @include prefix(animation-delay, 0s);
+  @include prefix(animation-direction, normal);
+  @include prefix(animation-timing-function, ease-in-out);
+  @include prefix(animation-fill-mode, forwards);
+}
+@include keyframes(disappear){
+  0% {
+    @include prefix(transform, scale(1));
+  }
+  5% {
+    @include prefix(transform, scale(1.1));
+  }
+  10% {
+    @include prefix(transform, scale(1));
+  }
+  15% {
+    @include prefix(transform, scale(0.9));
+  }
+  100% {
+    @include prefix(transform, scale(0));
+  }
+}
+
+// stand_ani
+.rotation {
+  @include prefix(animation-name, rotation);
+  @include prefix(animation-duration, 4s);
+  @include prefix(animation-delay, 0s);
+  @include prefix(animation-direction, normal);
+  @include prefix(animation-timing-function, linear);
+  @include prefix(animation-iteration-count, infinite);
+}
+@include keyframes(rotation){
+  0% {
+    @include prefix(transform, rotate(0));
+  }
+  100% {
+    @include prefix(transform, rotate(360deg));
+  }
+}
+
+.cloudy {position: relative; transition: all 1s ease;
+  @include prefix(animation-name, cloudy);
+  @include prefix(animation-duration, 6s);
+  @include prefix(animation-delay, 0s);
+  @include prefix(animation-direction, ease-in-out);
+  @include prefix(animation-timing-function, linear);
+  @include prefix(animation-iteration-count, infinite);
+
+  &:before {content: ''; display: block; width: 60%; height: 10%; background-color: rgba(0, 0, 0, 0.3); border-radius: 50%; position: absolute; left: 50%; bottom: 0; transform: translate(-50%, -50%);
+    @include prefix(animation-name, cloudy_shadow);
+    @include prefix(animation-duration, 6s);
+    @include prefix(animation-delay, 0s);
+    @include prefix(animation-direction, ease-in-out);
+    @include prefix(animation-timing-function, linear);
+    @include prefix(animation-iteration-count, infinite);
+  }
+}
+@include keyframes(cloudy){
+  0% {
+    @include prefix(transform, translate3d(0, -40px, 0));
+  }
+  50% {
+    @include prefix(transform, translate3d(0, -50px, 0));
+  }
+  100% {
+    @include prefix(transform, translate3d(0, -40px, 0));
+  }
+}
+@include keyframes(cloudy_shadow){
+  0% {
+    width: 60%; height: 10%; opacity: 1;
+    @include prefix(transform, translate3d(-50%, 40px, 0));
+  }
+  50% {
+    width: 40%; height: 5%; opacity: 0.3;
+    @include prefix(transform, translate3d(-50%, 50px, 0));
+  }
+  100% {
+    width: 60%; height: 10%; opacity: 1;
+    @include prefix(transform, translate3d(-50%, 40px, 0));
+  }
+}
+
+
+
+
+
+// path_drawing_ani
+.path_dawing_ani {
+  stroke-dasharray: 100%;  // ink_ui.js 에서 재조정
+  stroke-dashoffset: 100%;  // ink_ui.js 에서 재조정
+  @include prefix(animation-name, path_dawing_ani);
+  @include prefix(animation-duration, 5s);
+  @include prefix(animation-delay, 0s);
+  @include prefix(animation-direction, normal);
+  @include prefix(animation-timing-function, linear);
+  @include prefix(animation-fill-mode, forwards);
+}
+
+@keyframes path_dawing_ani {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+
+
+// scroll_ani
+.view_top {
+  @include prefix(animation-name, view_top);
+  @include prefix(animation-duration, 1s);
+  @include prefix(animation-delay, 0s);
+  @include prefix(animation-direction, alternate);
+  @include prefix(animation-fill-mode, forwards);
+}
+@include keyframes(view_top){
+  0% {
+    opacity: 0;
+    @include prefix(transform, translate3d(0,-50px,0));
+  }
+  100% {
+    opacity: 1;
+    @include prefix(transform, translate3d(0,0,0));
+  }
+}
+
+.view_bottom {
+  @include prefix(animation-name, view_bottom);
+  @include prefix(animation-duration, 1s);
+  @include prefix(animation-delay, 0s);
+  @include prefix(animation-direction, alternate);
+  @include prefix(animation-fill-mode, forwards);
+}
+@include keyframes(view_bottom){
+  0% {
+    opacity: 0;
+    @include prefix(transform, translate3d(0,50px,0));
+  }
+  100% {
+    opacity: 1;
+    @include prefix(transform, translate3d(0,0,0));
+  }
+}
+
+.view_left {
+  @include prefix(animation-name, view_left);
+  @include prefix(animation-duration, 1s);
+  @include prefix(animation-delay, 0s);
+  @include prefix(animation-direction, alternate);
+  @include prefix(animation-fill-mode, forwards);
+}
+@include keyframes(view_left){
+  0% {
+    opacity: 0;
+    @include prefix(transform, translate3d(-50px,0,0));
+  }
+  100% {
+    opacity: 1;
+    @include prefix(transform, translate3d(0,0,0));
+  }
+}
+
+.view_right {
+  @include prefix(animation-name, view_right);
+  @include prefix(animation-duration, 1s);
+  @include prefix(animation-delay, 0s);
+  @include prefix(animation-direction, alternate);
+  @include prefix(animation-fill-mode, forwards);
+}
+@include keyframes(view_right){
+  0% {
+    opacity: 0;
+    @include prefix(transform, translate3d(50px,0,0));
+  }
+  100% {
+    opacity: 1;
+    @include prefix(transform, translate3d(0,0,0));
+  }
+}
+
+.view_top_left {
+  @include prefix(animation-name, view_top_left);
+  @include prefix(animation-duration, 1s);
+  @include prefix(animation-delay, 0s);
+  @include prefix(animation-direction, alternate);
+  @include prefix(animation-fill-mode, forwards);
+}
+@include keyframes(view_top_left){
+  0% {
+    opacity: 0;
+    @include prefix(transform, translate3d(-50px,-50px,0));
+  }
+  100% {
+    opacity: 1;
+    @include prefix(transform, translate3d(0,0,0));
+  }
+}
+.view_top_right {
+  @include prefix(animation-name, view_top_right);
+  @include prefix(animation-duration, 1s);
+  @include prefix(animation-delay, 0s);
+  @include prefix(animation-direction, alternate);
+  @include prefix(animation-fill-mode, forwards);
+}
+@include keyframes(view_top_right){
+  0% {
+    opacity: 0;
+    @include prefix(transform, translate3d(50px,-50px,0));
+  }
+  100% {
+    opacity: 1;
+    @include prefix(transform, translate3d(0,0,0));
+  }
+}
+.view_bottom_left {
+  @include prefix(animation-name, view_bottom_left);
+  @include prefix(animation-duration, 1s);
+  @include prefix(animation-delay, 0s);
+  @include prefix(animation-direction, alternate);
+  @include prefix(animation-fill-mode, forwards);
+}
+@include keyframes(view_bottom_left){
+  0% {
+    opacity: 0;
+    @include prefix(transform, translate3d(-50px,50px,0));
+  }
+  100% {
+    opacity: 1;
+    @include prefix(transform, translate3d(0,0,0));
+  }
+}
+.view_bottom_right {
+  @include prefix(animation-name, view_bottom_right);
+  @include prefix(animation-duration, 1s);
+  @include prefix(animation-delay, 0s);
+  @include prefix(animation-direction, alternate);
+  @include prefix(animation-fill-mode, forwards);
+}
+@include keyframes(view_bottom_right){
+  0% {
+    opacity: 0;
+    @include prefix(transform, translate3d(50px,50px,0));
+  }
+  100% {
+    opacity: 1;
+    @include prefix(transform, translate3d(0,0,0));
+  }
+}
+
+.view_bounce {
+  animation-name: view_bounce;
+  animation-duration: 1s;
+  animation-delay: 0s;
+  animation-direction: alternate;
+  animation-fill-mode: forwards;
+}
+@include keyframes(view_bounce){
+  0% {
+    opacity: 0;
+    transform: translate3d(0,-100%,0);
+  }
+  50% {
+    transform: translate3d(0,8%,0);
+  }
+  65% {
+    transform: translate3d(0,-4%,0);
+  }
+  80% {
+    transform: translate3d(0,4%,0);
+  }
+  95% {
+    transform: translate3d(0,-2%,0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0,0%,0);
+  }
+}
+
+.view_bottom_slide {
+  @include prefix(animation-name, view_bottom_slide);
+  @include prefix(animation-duration, 1s);
+  @include prefix(animation-delay, 0s);
+  @include prefix(animation-direction, alternate);
+  @include prefix(animation-fill-mode, forwards);
+}
+@include keyframes(view_bottom_slide){
+  0% {
+    opacity: 1;
+    @include prefix(transform, translate3d(0,100%,0));
+  }
+  100% {
+    opacity: 1;
+    @include prefix(transform, translate3d(0,0,0));
+  }
+}
+.view_top_slide {
+  @include prefix(animation-name, view_top_slide);
+  @include prefix(animation-duration, 1s);
+  @include prefix(animation-delay, 0s);
+  @include prefix(animation-direction, alternate);
+  @include prefix(animation-fill-mode, forwards);
+}
+@include keyframes(view_top_slide){
+  0% {
+    opacity: 1;
+    @include prefix(transform, translate3d(0,-100%,0));
+  }
+  100% {
+    opacity: 1;
+    @include prefix(transform, translate3d(0,0,0));
+  }
+}
+.view_left_slide {
+  @include prefix(animation-name, view_left_slide);
+  @include prefix(animation-duration, 1s);
+  @include prefix(animation-delay, 0s);
+  @include prefix(animation-direction, alternate);
+  @include prefix(animation-fill-mode, forwards);
+}
+@include keyframes(view_left_slide){
+  0% {
+    opacity: 1;
+    @include prefix(transform, translate3d(-100%,0,0));
+  }
+  100% {
+    opacity: 1;
+    @include prefix(transform, translate3d(0,0,0));
+  }
+}
+.view_right_slide {
+  @include prefix(animation-name, view_right_slide);
+  @include prefix(animation-duration, 1s);
+  @include prefix(animation-delay, 0s);
+  @include prefix(animation-direction, alternate);
+  @include prefix(animation-fill-mode, forwards);
+}
+@include keyframes(view_right_slide){
+  0% {
+    opacity: 1;
+    @include prefix(transform, translate3d(100%,0,0));
+  }
+  100% {
+    opacity: 1;
+    @include prefix(transform, translate3d(0,0,0));
+  }
+}
+
+
+
+// 단일 조정
+@for $i from 1 through 14 {
+  .ani-speed-#{$i} {@include prefix(animation-duration, $i + s);}
+}
+// @for $i from 1 through 14 {
+//   .ani-delay-#{$i} {@include prefix(animation-delay, $i + s);}
+// }
+@for $i from 1 through 50 {
+  .ani-delay-#{$i} {@include prefix(animation-delay, ($i / 10) + s);}
+}

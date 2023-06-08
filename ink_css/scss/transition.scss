@@ -1,0 +1,17 @@
+// 너비 및 높이 관련
+//
+@import '../function.scss';
+@import '../setting.scss';
+
+// 트랜지션 (1000s 1초)
+@for $i from 0 through 50 {
+  $i: $i * 100;
+  $i_add: 50;
+  $ii: $i + $i_add;
+  .transition-#{$i} {transition: all $i / 1000 + s ease;}
+  .transition-#{$i}-linear {transition: all $i / 1000 + s linear;}
+  .transition-delay-#{$i} {transition-delay: $i / 1000 + s;}
+  .transition-#{$ii} {transition: all $ii / 1000 + s ease;}
+  .transition-#{$ii}-linear {transition: all $ii / 1000 + s linear;}
+  .transition-delay-#{$ii} {transition-delay: $ii / 1000 + s;}
+}

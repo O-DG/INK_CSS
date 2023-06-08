@@ -1,0 +1,24 @@
+// 배경, 백그라운드 관련
+//
+@import '../function.scss';
+@import '../setting.scss';
+
+
+.bg-base-img {background-repeat: no-repeat; background-position: center;}
+.bg-repeat {background-repeat: repeat;}
+.bg-no-repeat {background-repeat: no-repeat;}
+.bg-position-center {background-position: center;}
+.bg-position-top {background-position: top;}
+.bg-position-right {background-position: right;}
+.bg-position-bottom {background-position: bottom;}
+.bg-position-left {background-position: left;}
+.bg-color-air {background-color: transparent;}
+.bg-color-dis {background-color: $dis_color;}
+.bg-color-white {background-color: #fff;}
+.bg-color-primary {background-color: $color_primary;}
+.bg-color-danger {background-color: $color_danger;}
+.bg-color-point {background-color: $main_color;}
+.bg-color-transparent {background-color: transparent;}
+.bg-color-none {background-color: transparent;}
+.bg-none {background: none;}
+.bg-fixed {background-attachment: fixed;}

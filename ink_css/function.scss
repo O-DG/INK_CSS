@@ -1,0 +1,68 @@
+// INK style sheet functions
+// this is skills and simple code, cross browsing for standard sheet
+
+// 폰트 적용 간소화
+@mixin fontface($name, $dir, $file, $size, $style : normal){
+  @font-face {
+    font-family: $name;
+    // 기본(모든 브라우저 사용)
+    src: url($fonturl + '/' + $dir + '/' + $file + '.woff') format('woff'),
+    url($fonturl + '/' + $dir + '/' + $file + '.woff2') format('woff2'), // MS의 브라우저는 지원하지 않음(IE, Edge)
+    url($fonturl + '/' + $dir + '/' + $file + '.ttf') format('truetype'), // 구형 안드로이드 4.4 이하 필요
+    url($fonturl + '/' + $dir + '/' + $file + '.otf') format('opentype'),
+    url($fonturl + '/' + $dir + '/' + $file + '.eot') format('embedded-opentype'), // IE 6~11, 8이하 필요
+    url($fonturl + '/' + $dir + '/' + $file + '.svg') format('svg'); // 구형 아이폰 필요
+    font-weight: $size;
+    font-style: $style;
+    // auto(브라우저 기본), block(FOIT 방식 - 폰트 로딩 후 렌더링), swap(FOUT 방식 - 폴백 폰트 먼저 렌더링)
+    font-display: swap;
+  }
+}
+
+// 애니메이션 키프레임
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+// 크로스 브라우징 프리픽스
+$prefix-list: webkit, moz, ms, o;
+@mixin prefix($name, $var){
+  @each $prefix in $prefix-list {
+    -#{$prefix}-#{$name}: $var;
+  }
+  #{$name}: $var;
+}
+
+// 트랜스폼 계산식 풀이 코드(IE 에서 calc를 지원하지 않음으로 아래의 코드로 최적화)
+// 2022.01 부터 IE 최적화 및 심사에서 제외
+@function transformX_calc($x1 : 0, $x2 : 0, $x3 : 0, $x4 : 0, $x5 : 0) {
+
+  @return translateX($x1) translateX($x2) translateX($x3) translateX($x4) translateX($x5);
+}
+
+@function transformY_calc($y1 : 0, $y2 : 0, $y3 : 0, $y4 : 0, $y5 : 0) {
+  @return translateY($y1) translateY($y2) translateY($y3) translateY($y4) translateY($y5);
+}
+
+// 트랜스폼 중앙정렬
+@mixin transform_center() {
+  transform: translate(-50%, -50%);
+}
+
+
+//단일 반응형 코드
+@mixin screen_width($width) {
+  @media screen and (max-width: $width){
+    @content;
+  }
+}

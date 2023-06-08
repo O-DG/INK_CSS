@@ -1,0 +1,33 @@
+// 간격 관련
+//
+@import '../function.scss';
+@import '../setting.scss';
+
+// 포지션
+.static {position: static;}
+.relative {position: relative;}
+.absolute {position: absolute;}
+.sticky {position: sticky;}
+.fixed {position: fixed;}
+
+// 위치 값
+@for $i from 0 through 100 {
+  @if ($i % 2) == 0 {
+    .top-#{$i} {top: $i + px; bottom: auto;}
+    .right-#{$i} {right: $i + px; left: auto;}
+    .bottom-#{$i} {bottom: $i + px; top: auto;}
+    .left-#{$i} {left: $i + px; right: auto;}
+
+    @if ($i <= 100) {
+      .top-#{$i}per {top: percentage($i)/100; bottom: auto;}
+      .right-#{$i}per {right: percentage($i)/100; left: auto;}
+      .bottom-#{$i}per {bottom: percentage($i)/100; top: auto;}
+      .left-#{$i}per {left: percentage($i)/100; right: auto;}
+    }
+  }
+}
+
+// z-index (제트인덱스)
+@for $i from 0 through 100 {
+  .z-#{$i} {z-index: $i;}
+}

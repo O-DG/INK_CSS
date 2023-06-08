@@ -1,0 +1,275 @@
+// 반응형(responsive) 관련
+//
+@import '../function.scss';
+@import '../setting.scss';
+
+// 기본값
+// $xxs : 300px;
+// $xs : 500px;
+// $sm : 600px;
+// $md : 800px;
+// $lg : 1000px;
+// $xl : 1200px;
+// $xxl : 1400px;
+
+// 반응형 크기별
+$screen-size-name: xxl, xl, lg, md, sm, xs, xxs;
+$screen-size-var: (xxl : $xxl, xl : $xl, lg : $lg, md : $md, sm : $sm, xs : $xs, xxs : $xxs);
+
+// 반응형 변수 명으로 크기 값 리턴
+@function w-size_re($size) {
+  @return map-get($screen-size-var, $size);
+}
+
+@each $var in $screen-size-name {
+  @include screen_width(w-size_re($var)){ // 기본값 300px
+    // 보이고 숨기기
+    .#{$var}-hide {display: none;}
+    .#{$var}-show {display: block;}
+
+    // 디스플레이
+    .#{$var}-inline {display: inline;}
+    .#{$var}-inline-block {display: inline-block;}
+    .#{$var}-block {display: block;}
+    .#{$var}-flex {display: flex;}
+    .#{$var}-inline-flex {display: inline-flex;}
+
+    $f-row : (row : row, row-r : row-reverse, col : column, col-r : column-reverse);
+    $f-wrap : (nowrap : nowrap, wrap : wrap, wrap-r : wrap-reverse);
+    @each $key, $val in $f-row {
+      .#{$var}-f-#{$key} {flex-direction: $val;}
+    }
+    @each $key, $val in $f-wrap {
+      .#{$var}-f-#{$key} {flex-wrap: $val;}
+    }
+    @each $key1, $val1 in $f-row {
+      @each $key2, $val2 in $f-wrap {
+        .#{$var}-f-#{$key1}-#{$key2} {flex-grow: $val1 $val2;}
+      }
+    }
+
+    $f-justify : (start : flex-start, end : flex-end, center : center, between : space-between, around : space-around, enenly : space-evenly);
+    $f-align : (start : flex-start, end : flex-end, center : center, baseline : baseline);
+    @each $key, $val in $f-justify {
+      .#{$var}-f-justify-#{$key} {justify-content: $val;}
+    }
+    @each $key, $val in $f-align {
+      .#{$var}-f-align-#{$key} {align-items: $val;}
+    }
+
+    .#{$var}-f-item {flex: 0 1 auto;}
+    .#{$var}-f-item-1 {flex: 1;}
+    // grow : flex-container 내부에서 할당할 공간의 정의
+    // shrink : flex-container 보다 요소의 크기가 클 때 적용되는 요소의 크기 비율
+    // basis : 아이템의 초기 크기 wrap의 형태에 따라 width 및 height 값으로 변동
+    // basis 속성은 auto만 지원 : 각 요소별 width 및 height 값으로 대체 할 것
+    @for $i from 0 through 10 {
+      @for $j from 0 through 10 {
+        .#{$var}-f-item-#{$i}-#{$j} {flex: $i / 10 $j / 10 auto;}
+      }
+    }
+
+    @for $i from 0 through 100 {
+      @if ($i % 2) == 0 {
+        .#{$var}-f-gap-#{$i} {gap: $i + px;}
+      }
+    }
+
+    $f-item-align : (auto : auto, stretch : stretch, start : flex-start, end : flex-end, center : center, baseline : baseline);
+    @each $key, $val in $f-item-align {
+      .#{$var}-f-item-align-#{$key} {align-self: $val;}
+    }
+
+    //요소 정렬
+    .#{$var}-left {float: left;}
+    .#{$var}-right {float: right;}
+    .#{$var}-float-none {float: none;}
+
+    // 텍스트 숨기기
+    .#{$var}-text-hide {
+      overflow: hidden;
+      position: absolute; // BFC : relative / IFC : absolute
+      display: inline-block; // IFC(inline formatting context) 문맥상의 문제 해결
+      border: 0;
+      // 요소크기의 0을 피하고 가장 근접하게 수렴한 1px
+      // screen out 기법으로 인한 black hat을 피하기 위해 고안된 방법
+      width: 1px;
+      height: 1px;
+      clip: rect(1px 1px 1px 1px); // IE6, IE7
+      clip: rect(1px, 1px, 1px, 1px);
+      clip-path: inset(50%);
+      z-index: -1;
+    }
+
+    // 텍스트 정렬
+    .#{$var}-text-center {text-align: center;}
+    .#{$var}-text-left {text-align: left;}
+    .#{$var}-text-right {text-align: right;}
+    .#{$var}-text-justify {text-align: justify;}
+
+
+    // 포지션
+    .#{$var}-static {position: static;}
+    .#{$var}-relative {position: relative;}
+    .#{$var}-absolute {position: absolute;}
+    .#{$var}-sticky {position: sticky;}
+    .#{$var}-fixed {position: fixed;}
+
+    // 테두리
+    @for $i from 0 through 8 {
+      @if $i == 1 or ($i % 2) == 0 {
+        @if $i == 0 {
+          .#{$var}-b-#{$i} {border: $i;}
+          .#{$var}-bt-#{$i} {border-top: $i;}
+          .#{$var}-br-#{$i} {border-right: $i;}
+          .#{$var}-bb-#{$i} {border-bottom: $i;}
+          .#{$var}-bl-#{$i} {border-left: $i;}
+        }
+        @else {
+          .#{$var}-b-#{$i} {border: $i + px solid $border_color;}
+          .#{$var}-bt-#{$i} {border-top: $i + px solid $border_color;}
+          .#{$var}-br-#{$i} {border-right: $i + px solid $border_color;}
+          .#{$var}-bb-#{$i} {border-bottom: $i + px solid $border_color;}
+          .#{$var}-bl-#{$i} {border-left: $i + px solid $border_color;}
+        }
+      }
+    }
+    // 테두리 색상
+    .#{$var}-b-color-main {border-color: $main_color;}
+    .#{$var}-b-color-dis {border-color: $dis_color;}
+    .#{$var}-b-color-point {border-color: $color_danger;}
+  };
+
+  // 모서리
+  @for $i from 1 through 60 {
+    @if ($i % 2) == 0 {
+      .#{$var}-r-#{$i} {border-radius: $i + px;}
+      .#{$var}-r-tl-#{$i} {border-top-left-radius: $i + px;}
+      .#{$var}-r-tr-#{$i} {border-top-right-radius: $i + px;}
+      .#{$var}-r-bl-#{$i} {border-bottom-left-radius: $i + px;}
+      .#{$var}-r-br-#{$i} {border-bottom-right-radius: $i + px;}
+    }
+  }
+  .#{$var}-r-full {border-radius: 50%;}
+}
+
+
+// 너비
+@each $var in $screen-size-name {
+  @include screen_width(w-size_re($var)){ // 기본값 300px
+    // 너비(퍼센테이지 기준)
+    @for $i from 1 through 100 {
+      @if ($i % 2) == 0 {
+        .#{$var}-w-#{$i}per {width: percentage($i)/100;}
+        .#{$var}-w-#{$i}vw {width: $i + vw;}
+      }
+    }
+    // 너비(컬럼 기준)
+    @for $i from 1 through 12 {
+      .#{$var}-col-#{$i} {width: calc(100% / #{$i});}
+    }
+    // 디바이스 전체화면
+    .#{$var}-w-screen {width: 100vw; max-width: 100vw;}
+    // 전체 채우기
+    .#{$var}-w-full {width: 100%; max-width: 100%;}
+  };
+}
+
+// 높이
+@each $var in $screen-size-name {
+  @include screen_width(w-size_re($var)){ // 기본값 300px
+    // 최소 및 최대 높이
+    @for $i from 1 through 800 {
+      @if ($i % 2) == 0 {
+        .#{$var}-h-#{$i} {height: $i + px;}
+      }
+    }
+    .#{$var}-h-auto {height: auto;}
+    // 높이
+    @for $i from 1 through 100 {
+      @if ($i % 2) == 0 {
+        .#{$var}-h-#{$i}per {height: percentage($i)/100;}
+        .#{$var}-h-#{$i}vh {height: $i + vh;}
+      }
+    }
+    // 높이(컬럼 기준)
+    @for $i from 1 through 12 {
+      .#{$var}-row-#{$i} {height: calc(100% / #{$i});}
+    }
+
+    // 디바이스 전체화면
+    .#{$var}-h-screen {height: calc(100vh - #{$gap_h}); max-height: calc(100vh - #{$gap_h});}
+    // 전체 채우기
+    .#{$var}-h-full {height: 100%; max-height: 100%;}
+
+  };
+}
+
+
+// 포지션
+@each $var in $screen-size-name {
+  @include screen_width(w-size_re($var)){ // 기본값 300px
+    // 포지션
+    .#{$var}-static {position: static;}
+    .#{$var}-relative {position: relative;}
+    .#{$var}-absolute {position: absolute;}
+    .#{$var}-sticky {position: sticky;}
+    .#{$var}-fixed {position: fixed;}
+
+    // 위치 값
+    @for $i from 0 through 100 {
+      @if ($i % 2) == 0 {
+        .#{$var}-top-#{$i} {top: $i + px;}
+        .#{$var}-right-#{$i} {right: $i + px;}
+        .#{$var}-bottom-#{$i} {bottom: $i + px;}
+        .#{$var}-left-#{$i} {left: $i + px;}
+        @if ($i <= 100) {
+          .#{$var}-top-#{$i}per {top: percentage($i)/100;}
+          .#{$var}-right-#{$i}per {right: percentage($i)/100;}
+          .#{$var}-bottom-#{$i}per {bottom: percentage($i)/100;}
+          .#{$var}-left-#{$i}per {left: percentage($i)/100;}
+        }
+      }
+    }
+
+    // z-index (제트인덱스)
+    @for $i from 0 through 100 {
+      .#{$var}-z-#{$i} {z-index: $i;}
+    }
+  };
+}
+
+// 간격
+@each $var in $screen-size-name {
+  @include screen_width(w-size_re($var)){ // 기본값 300px
+    // 외부(마진) 간격(margin)
+    @for $i from 0 through 40 {
+      @if ($i % 2) == 0 {
+        .#{$var}-m-#{$i} {margin: $i + px;}
+        @for $j from 0 through 40 {
+          .#{$var}-m-#{$i}-#{$j} {margin: $i + px $j + px;}
+        }
+        .#{$var}-m-#{$i}-auto {margin: $i + px auto;}
+        .#{$var}-mt-#{$i} {margin-top: $i + px;}
+        .#{$var}-mr-#{$i} {margin-right: $i + px;}
+        .#{$var}-mb-#{$i} {margin-bottom: $i + px;}
+        .#{$var}-ml-#{$i} {margin-left: $i + px;}
+      }
+    }
+    .#{$var}-m-auto {margin: 0 auto;}
+
+    // 내부(패딩) 간격(padding)
+    @for $i from 0 through 40 {
+      @if ($i % 2) == 0 {
+        .#{$var}-p-#{$i} {padding: $i + px;}
+        @for $j from 0 through 40 {
+          .#{$var}-p-#{$i}-#{$j} {padding: $i + px $j + px;}
+        }
+        .#{$var}-pt-#{$i} {padding-top: $i + px;}
+        .#{$var}-pr-#{$i} {padding-right: $i + px;}
+        .#{$var}-pb-#{$i} {padding-bottom: $i + px;}
+        .#{$var}-pl-#{$i} {padding-left: $i + px;}
+      }
+    }
+  };
+}

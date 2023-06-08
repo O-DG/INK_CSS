@@ -1,0 +1,96 @@
+/* INK - my reset css kit */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth; word-break: keep-all;
+  overflow-x: hidden;
+}
+body {
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+ol::after, ul::after, dl::after {
+  content: ''; display: block; clear: both;
+}
+
+li::after {content: ''; display: block; clear: both;}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+th, td {vertical-align: middle;}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input, select, textarea, button {
+	border: 0;
+  box-sizing: border-box;
+}
+textarea {resize: vertical;}
+
+input[type="checkbox"],
+input[type="radio"], select, button {
+  cursor: pointer;
+}
+input[type="checkbox"], input[type="radio"]{
+  width: 16px;
+  height: 16px;
+}
+
+/* :focus {outline: 2px solid #719ad7;} */
+
+
+::selection {
+	background-color: #105fd5;
+	color: #ffe600;
+}
+
+.text-hide {overflow: hidden; position: absolute; display: inline-block; border: 0; width: 1px; height: 1px; clip: rect(1px 1px 1px 1px); clip: rect(1px, 1px, 1px, 1px); clip-path: inset(50%); z-index: -1;
+}

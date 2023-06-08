@@ -1,0 +1,68 @@
+// 너비 및 높이 관련
+//
+@import '../function.scss';
+@import '../setting.scss';
+
+// 최소 및 최대 너비
+@for $i from 1 through 800 {
+  @if ($i % 2) == 0 {
+    .w-#{$i} {width: $i + px;}
+    .min-w-#{$i} {min-width: $i + px;}
+    .max-w-#{$i} {max-width: $i + px;}
+    @if $i <= 100 {
+      .min-w-#{$i}per {min-width: percentage($i)/100;}
+      .min-w-#{$i}vw {min-width: $i + vw;}
+      .max-w-#{$i}per {max-width: percentage($i)/100;}
+      .max-w-#{$i}vw {max-width: $i + vw;}
+    }
+  }
+}
+.w-auto {width: auto;}
+
+// 너비(퍼센테이지 기준)
+@for $i from 1 through 100 {
+  @if ($i % 2) == 0 {
+    .w-#{$i}per {width: percentage($i)/100;}
+    .w-#{$i}vw {width: $i + vw;}
+  }
+}
+// 너비(컬럼 기준)
+@for $i from 1 through 12 {
+  .col-#{$i} {width: calc(100% / #{$i});}
+}
+// 디바이스 전체화면
+.w-screen {width: 100vw; max-width: 100vw;}
+// 전체 채우기
+.w-full {width: 100%; max-width: 100%;}
+
+// 최소 및 최대 높이
+@for $i from 1 through 800 {
+  @if ($i % 2) == 0 {
+    .h-#{$i} {height: $i + px;}
+    .min-h-#{$i} {min-height: $i + px;}
+    .max-h-#{$i} {max-height: $i + px;}
+    @if $i <= 100 {
+      .min-h-#{$i}per {min-height: percentage($i)/100;}
+      .min-h-#{$i}vh {min-height: $i + vh;}
+      .max-h-#{$i}per {max-height: percentage($i)/100;}
+      .max-h-#{$i}vh {max-height: $i + vh;}
+    }
+  }
+}
+.h-auto {height: auto;}
+
+// 높이
+@for $i from 1 through 100 {
+  @if ($i % 2) == 0 {
+    .h-#{$i}per {height: percentage($i)/100;}
+    .h-#{$i}vh {height: $i + vh;}
+  }
+}
+// 높이(컬럼 기준)
+@for $i from 1 through 12 {
+  .row-#{$i} {height: calc(100% / #{$i});}
+}
+// 디바이스 전체화면
+.h-screen {height: calc(100vh - #{$gap_h}); max-height: calc(100vh - #{$gap_h});}
+// 전체 채우기
+.h-full {height: 100%; max-height: 100%;}

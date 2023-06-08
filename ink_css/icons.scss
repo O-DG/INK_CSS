@@ -1,0 +1,140 @@
+// INK system icons sheet
+@import './icons_function.scss';
+
+$icon_color: rgb(0, 0, 0); // RGB color code를 이용할 것
+
+// 아이콘 표현
+.icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  font-size: 0;
+  line-height: 0;
+  float: left;
+  padding: 0;
+  margin: 0 auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  vertical-align: baseline;
+
+  // 아이콘 목록 동기화
+  $func_icon_list : func_icons($icon_color);
+
+  // 아이콘 등록
+  @each $icon_name in map-keys($func_icon_list) {
+    @include create_icon($icon_name, $icon_color);
+  }
+
+  // 추가 아이콘 목록
+  // 별도의 추가 아이콘(색상변경) - 접미사를 입력하여 사용
+  @include create_icon('home', 'rgb(0, 133, 208)','ex');
+  @include create_icon('upload', 'rgb(255, 255, 255)', 'c');
+
+  @include create_icon('home', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('more_v', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('more_h', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('search', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('user', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('user_f', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('check', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('check_bold', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('fail', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('fail_bold', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('plus', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('minus', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('mark_exclamation', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('mark_question', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('heart', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('heart_f', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('bookmark', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('bookmark_f', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('star', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('star_f', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('arrow_t', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('arrow_r', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('arrow_b', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('arrow_l', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('arrow_double_t', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('arrow_double_r', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('arrow_double_b', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('arrow_double_l', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('arrow_line', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('arrow_cross_line', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('arrow_line_v', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('arrow_line_h', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('arrows', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('arrows_cross', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('arrows_v', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('arrows_h', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('world', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('download', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('upload', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('picture', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('pictures', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('file', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('folder', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('print', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('share', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('mail', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('mail_f', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('map_marker', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('map_marker_f', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('alarm', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('alarm_f', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('enlargement', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('reduction', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('play', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('stop', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('fast_forward', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('rewind', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('comment', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('comments', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('pc', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('tablet', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('mobile', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('sound', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('mute', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('calendar', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('book', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('male', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('female', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('system', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('system_f', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('power', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('loud_speaker', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('video', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('video_f', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('phone', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('lock', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('un_lock', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('refresh', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('show', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('hide', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('sns_kakao', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('sns_naver', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('sns_google', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('sns_twiter', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('sns_facebook', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('sns_instargram', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('sns_youtube', 'rgb(255, 255, 255)', 'white');
+  // add
+  @include create_icon('trash_can', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('trash_can_f', 'rgb(255, 255, 255)', 'white');
+  @include create_icon('buger_menu', 'rgb(255, 255, 255)', 'white');
+
+
+}
+.icon_box {display: inline-block; width: 48px; height: 48px; padding: 12px;
+  .icon {display: block;}
+}
+//
+// .icon {
+// 	display: inline-block;
+// 	width: 40px;
+// 	height: 40px;
+//
+// 	&.check {
+// 		background-image: icon(check);
+// 	}
+// }
