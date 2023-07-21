@@ -18,8 +18,9 @@ SCSS로 작성되었으며, 각각의 분류별로 모듈화되었습니다.
 추가로 기능적인 부분을 다루기 위해 Javascript를 이용하였습니다.
 
 <div align="left">
-	<img src="https://img.shields.io/badge/css-#1572B6?style=flat&logo=css&logoColor=white" />
-  <img src="https://img.shields.io/badge/css-CC6699?style=flat&logo=css&logoColor=white" />
+	<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" />
+	<img src="https://img.shields.io/badge/SASS-CC6699?style=flat&logo=SASS&logoColor=white" />
+  	<img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat&logo=javascript&logoColor=white" />
 </div>
 
 
